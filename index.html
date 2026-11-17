@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Find your window to get outside. Explore current weather, an hourly outlook, and a seven-day forecast with Daylight.">
+  <title>Daylight | A little more outside</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to weather</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Daylight home"><span class="brand-sun" aria-hidden="true">✳</span> daylight<span class="brand-dot">.</span></a>
+    <p class="header-note">A LITTLE MORE OUTSIDE</p>
+    <fieldset class="units"><legend class="sr-only">Temperature unit</legend><button type="button" id="fahrenheit" aria-pressed="true">°F</button><button type="button" id="celsius" aria-pressed="false">°C</button></fieldset>
+  </header>
+  <main id="main" class="wrap">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">YOUR DAILY CHANGE OF SCENERY</p><h1 id="page-title">Good days start<br>with a little <em>air.</em></h1><p class="intro-copy">Check the sky. Find your window. Head outside.</p></div>
+      <div class="search-panel">
+        <form id="search-form" role="search">
+          <label for="city">Where are you headed?</label>
+          <div class="search-row"><input id="city" name="city" type="search" placeholder="Search a city" required minlength="2" maxlength="100" autocomplete="off" aria-describedby="search-help"><button type="submit" id="search-button">Find city <span aria-hidden="true">↗</span></button></div>
+          <p id="search-help">Try East Lansing, Chicago, or anywhere new.</p>
+        </form>
+        <p id="search-status" class="search-status" role="status"></p>
+        <ul id="search-results" class="search-results" aria-label="Matching cities"></ul>
+      </div>
+    </section>
+    <div class="location-row"><div><p class="eyebrow">THE OUTLOOK FOR</p><h2 id="location">East Lansing, Michigan</h2></div><p id="updated" class="muted">Waiting for the forecast</p></div>
+    <div class="status-row"><p id="status" role="status">Loading weather…</p><button type="button" id="retry" class="text-button" hidden>Try again ↻</button></div>
+    <noscript><p class="error-note">Enable JavaScript to load weather and search for cities.</p></noscript>
+    <div id="weather" hidden>
+      <div class="hero-grid">
+        <section class="current-card" aria-labelledby="current-title">
+          <div class="card-top"><h3 id="current-title">Right now</h3><span class="pill">MODEL ESTIMATE</span></div>
+          <div class="sky-art" aria-hidden="true"><div class="sun-disc"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div></div>
+          <p class="temperature" id="temperature"></p><p class="condition" id="condition"></p><p class="feels" id="feels"></p>
+          <dl class="current-stats"><div><dt>Wind</dt><dd id="wind"></dd></div><div><dt>Humidity</dt><dd id="humidity"></dd></div><div><dt>Today's high / low</dt><dd id="high-low"></dd></div></dl>
+        </section>
+        <section class="window-card" aria-labelledby="window-title">
+          <div class="card-top"><h3 id="window-title">Your outside window</h3><span class="circle-arrow" aria-hidden="true">↗</span></div>
+          <p class="eyebrow" id="window-label">TODAY'S PICK</p><p class="window-time" id="window-time"></p><p class="window-copy" id="window-copy"></p>
+          <div class="window-bottom"><span class="mini-sun" aria-hidden="true">☼</span><p id="sunset"></p></div>
+          <details><summary>How is this picked?</summary><p>We rank remaining daylight hours today by closeness to 20°C (68°F), lower precipitation probability, and lighter wind. The pick is a one-hour forecast, not a guarantee. If the best hour has a storm code, at least 50% precipitation probability, wind over 30 km/h, or a temperature outside 5–32°C, we suggest an indoor plan. Check local alerts before heading out.</p></details>
+        </section>
+      </div>
+      <section class="hourly-section" aria-labelledby="hourly-title"><div class="section-heading"><h3 id="hourly-title">The next 12 hours</h3><p>Temperature &amp; precipitation chance</p></div><ul id="hourly" class="hourly-grid"></ul></section>
+      <section class="week-section" aria-labelledby="week-title"><div class="section-heading"><h3 id="week-title">A little further ahead</h3><p>Your seven-day forecast</p></div><ul id="daily" class="daily-grid"></ul></section>
+    </div>
+    <aside class="closing-note"><span aria-hidden="true">↗</span><p>A walk around the block counts.<br><strong>Make a little room for outside.</strong></p><span class="note-number" aria-hidden="true">01 / 07</span></aside>
+  </main>
+  <footer class="wrap"><p>daylight. <span>A small forecast for your next adventure.</span></p><p>Weather: <a href="https://open-meteo.com/">Open-Meteo</a> · Places: <a href="https://www.geonames.org/">GeoNames</a> via Open-Meteo · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p><p class="footer-detail">Forecasts can change. All displayed times are local to the selected city. Outdoor suggestions are calculated by this app.</p></footer>
+</body>
+</html>
